@@ -1,4 +1,4 @@
-#Here I created 2 tables: one for movies stars and the other for movies
+#In this SQL code, I created 2 tables: one for movies stars and the other for movies, and I'm querying the tables to answer questions about the data.  
 
 
 CREATE TABLE movie_stars (
