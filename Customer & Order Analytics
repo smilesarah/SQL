@@ -67,3 +67,13 @@ WHERE orderdate = '02/18/19 01:35';
 SELECT SUM(quantity)
 FROM BIT_DB.FebSales 
 WHERE orderdate LIKE '02/18/19%';
+
+#9 What battery products were sold in February?
+SELECT DISTINCT Product
+FROM BIT_DB.FebSales
+WHERE Product like '%Batteries%'
+
+#10. What products in February Sales have a price ending in 99 cents?
+SELECT DISTINCT Product, Price
+FROM BIT_DB.FebSales 
+WHERE Price like '%.99'
