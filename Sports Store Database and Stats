@@ -1,3 +1,5 @@
+# Here I created a table of data for sports store and altered the data to reflect changes to the users in the table.
+
 CREATE TABLE sarahs_sports (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, sold INTEGER);
 
 INSERT INTO sarahs_sports VALUES (1, "basketball", 50, 100, 5); 
@@ -16,11 +18,20 @@ INSERT INTO sarahs_sports VALUES (13, "water_bottle", 15, 100, 10);
 INSERT INTO sarahs_sports VALUES (14, "cleats", 65, 100, 2);
 INSERT INTO sarahs_sports VALUES (15, "elbow_pads", 25, 100, 1);
 
-SELECT item, price, sold FROM sarahs_sports ORDER BY price;
+#1. List only the items, price, and how many sold, order by most expensive price.
+SELECT item, price, sold 
+FROM sarahs_sports 
+ORDER BY price asc;
 
-SELECT SUM(sold) AS "quantity_sold" FROM sarahs_sports;
+#2. Find the total number of items sold.
+SELECT SUM(sold) AS "quantity_sold" 
+FROM sarahs_sports;
 
-SELECT item, price*sold AS "total_sales_by_item" FROM sarahs_sports;
+#3. List the item and the total amount of sales for each item.
+SELECT item, price*sold AS "total_sales_by_item" 
+FROM sarahs_sports;
 
-SELECT SUM(price*sold) AS "total_sales" FROM sarahs_sports;
+#4. Find the total amount of sales for all items.
+SELECT SUM(price*sold) AS "total_sales" 
+FROM sarahs_sports;
 
