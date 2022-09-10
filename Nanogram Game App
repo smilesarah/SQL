@@ -1,39 +1,39 @@
 # Here I created a table of data for users of an app called "nanogram" and altered the data to reflect changes to the users in the table.
 
-CREATE TABLE nanogram (id INTEGER PRIMARY KEY,
+CREATE TABLE nanogram_users (id INTEGER PRIMARY KEY,
     name TEXT, level INTEGER);
 
-INSERT INTO nanogram (name, level) VALUES ("Regina Falange", "1");
-INSERT INTO nanogram (name, level) VALUES ("Ken Adams", "2");
-INSERT INTO nanogram (name, level) VALUES ("Monica Geller", "12");
-INSERT INTO nanogram (name, level) VALUES ("Ross Geller", "15");
-INSERT INTO nanogram (name, level) VALUES ("Joey Tribiani", "1");
-INSERT INTO nanogram (name, level) VALUES ("Chandler Bing", "10");
-INSERT INTO nanogram (name, level) VALUES ("Rachel Green", "2");
-INSERT INTO nanogram (name, level) VALUES ("Phoebe Buffet", "1");
-INSERT INTO nanogram (name, level) VALUES ("Mike Hannigan", "17");
-INSERT INTO nanogram (name, level) VALUES ("Mr. Heckles", "2");
-INSERT INTO nanogram (name, level) VALUES ("Janice", "3");
+INSERT INTO nanogram_users (name, level) VALUES ("Regina Falange", "1");
+INSERT INTO nanogram_users (name, level) VALUES ("Ken Adams", "2");
+INSERT INTO nanogram_users (name, level) VALUES ("Monica Geller", "12");
+INSERT INTO nanogram_users (name, level) VALUES ("Ross Geller", "15");
+INSERT INTO nanogram_users (name, level) VALUES ("Joey Tribiani", "1");
+INSERT INTO nanogram_users (name, level) VALUES ("Chandler Bing", "10");
+INSERT INTO nanogram_users (name, level) VALUES ("Rachel Green", "2");
+INSERT INTO nanogram_users (name, level) VALUES ("Phoebe Buffet", "1");
+INSERT INTO nanogram_users (name, level) VALUES ("Mike Hannigan", "17");
+INSERT INTO nanogram_users (name, level) VALUES ("Mr. Heckles", "2");
+INSERT INTO nanogram_users (name, level) VALUES ("Janice", "3");
 
 #1. Add a last name for the user named Janice.
-UPDATE nanogram SET name = "Janice Litman-Goralnik"
+UPDATE nanogram_users SET name = "Janice Litman-Goralnik"
 WHERE name = "Janice";
 
 #2. Correct the spelling for Regina's last name.
-UPDATE nanogram SET name = "Regina Phalange" WHERE name = "Regina Falange";
+UPDATE nanogram_users SET name = "Regina Phalange" WHERE name = "Regina Falange";
 
 #2. Add another user to the table.
-INSERT INTO nanogram (name, level) VALUES ("Richard Burke", "22");
+INSERT INTO nanogram_users (name, level) VALUES ("Richard Burke", "22");
 
 #3. Add a badge field to the table and set default to 'unknown.'
-ALTER TABLE nanogram ADD badge TEXT default "unknown";
+ALTER TABLE nanogram_users ADD badge TEXT default "unknown";
 
 #4. Create badge names based on levels 0-5, 6-20
 BEGIN TRANSACTION;
-UPDATE nanogram SET badge = "beginner" WHERE level <6;
-UPDATE nanogram SET badge = "intermediate" WHERE level >= 6;
-UPDATE nanogram SET badge = "advanced" WHERE level >20;
+UPDATE nanogram_users SET badge = "beginner" WHERE level <6;
+UPDATE nanogram_users SET badge = "intermediate" WHERE level >= 6;
+UPDATE nanogram_users SET badge = "advanced" WHERE level >20;
 COMMIT;
 
 #5. Delete a user from the table.
-DELETE FROM nanogram WHERE name = "Mr. Heckles";
+DELETE FROM nanogram_users WHERE name = "Mr. Heckles";
