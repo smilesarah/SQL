@@ -17,20 +17,20 @@ ON cust.order_id=FEB.orderid
 
 #4. Which product was the cheapest one sold in January, and what was the price? 
 ####### Option #1 ######
-SELECT distinct Product, price
+SELECT DISTINCT product, price
 FROM BIT_DB.JanSales
-WHERE  price in (SELECT min(price) FROM BIT_DB.JanSales)
+WHERE  price IN (SELECT MIN(price) FROM BIT_DB.JanSales)
 ####### Option #2 ######
-SELECT distinct product, price 
+SELECT DISTINCT product, price 
 FROM BIT_DB.JanSales 
 ORDER BY price ASC LIMIT 1
 ####### Option #3 ######
-SELECT distinct product, MIN(price) 
+SELECT DISTINCT product, MIN(price) 
 FROM BIT_DB.JanSales Jan 
 GROUP BY product, price 
 ORDER BY price ASC LIMIT 1
 ####### Option #4 ######
-SELECT product, min(price) 
+SELECT product, MIN(price) 
 FROM BIT_DB.JanSales Jan 
 GROUP BY product, price 
 ORDER BY price ASC
