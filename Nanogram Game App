@@ -1,0 +1,40 @@
+CREATE TABLE nanogram (id INTEGER PRIMARY KEY,
+    name TEXT, level INTEGER);
+
+INSERT INTO nanogram (name, level) VALUES ("Regina Falange", "1");
+INSERT INTO nanogram (name, level) VALUES ("Ken Adams", "2");
+INSERT INTO nanogram (name, level) VALUES ("Monica Geller", "2");
+INSERT INTO nanogram (name, level) VALUES ("Ross Geller", "5");
+INSERT INTO nanogram (name, level) VALUES ("Joey Tribiani", "1");
+INSERT INTO nanogram (name, level) VALUES ("Chandler Bing", "10");
+INSERT INTO nanogram (name, level) VALUES ("Rachel Green", "2");
+INSERT INTO nanogram (name, level) VALUES ("Phoebe Buffet", "1");
+INSERT INTO nanogram (name, level) VALUES ("Mike Hannigan", "7");
+INSERT INTO nanogram (name, level) VALUES ("Mr. Heckles", "2");
+INSERT INTO nanogram (name, level) VALUES ("Janice", "3");
+
+SELECT * FROM nanogram;
+
+UPDATE nanogram SET name = "Janice Litman-Goralnik"
+WHERE name = "Janice";
+UPDATE nanogram SET name = "Regina Phalange" WHERE name = "Regina Falange";
+
+SELECT * FROM nanogram;
+
+ALTER TABLE nanogram ADD badge TEXT default "unknown";
+
+INSERT INTO nanogram (name, level, badge) VALUES ("Richard Burke", "22", "intermediate");
+
+SELECT * FROM nanogram;
+
+BEGIN TRANSACTION;
+UPDATE nanogram SET badge = "beginner" WHERE level <6;
+UPDATE nanogram SET badge = "intermediate" WHERE level >= 6;
+UPDATE nanogram SET badge = "advanced" WHERE level >19;
+COMMIT;
+
+SELECT * FROM nanogram;
+
+DELETE FROM nanogram WHERE name = "Mr. Heckles";
+
+SELECT * FROM nanogram;
