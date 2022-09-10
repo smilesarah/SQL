@@ -44,8 +44,18 @@ FROM BIT_DB.spotifydata
 ORDER BY popularity desc
 LIMIT 10;
 
-#Finally, I ranked the artists by the average loudness of their songs.
+#In addition, I ranked the artists by the average loudness of their songs.
 SELECT artist_name, AVG(loudness)
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 ORDER BY AVG(loudness) desc;
+
+#Finally, I created a temporary table (CTE) and calculated the average popularity for the every artists in the table, with an average popularity of 90 or above, and gave them a label as a “Top Star”. 
+WITH popularity_average_CTE AS 
+(SELECT s.artist_name, AVG(s.popularity) AS average_popularity
+FROM SpotifyData AS s 
+GROUP BY s.artist_name);
+ 
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM popularity_average_CTE
+WHERE average_popularity>=90;
