@@ -1,0 +1,61 @@
+CREATE TABLE movie_stars (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullname TEXT,
+    spouse TEXT,
+    age INTEGER);
+    
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Goldie Hawn", "Kurt Russell", "76");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Kurt Russell", "Goldie Hawn", "71");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Melissa McCarthy", "Ben Falcone", "52");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Ben Falcone", "Melissa McCarthy", "49");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("John Kransinski", "Emily Blunt", "42");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Emily Blunt", "John Kransinski", "39");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Kristen Bell", "Dax Shepard", "42");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Dax Shepard", "Kristen Bell", "47");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Harrison Ford", "Calista Flockhart", "47");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Calista Flockhart", "Harrison Ford", "80");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Tom Hanks", "Rita Wilson", "66");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Rita Wilson", "Tom Hanks", "65");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Ryan Reynolds", "Blake Lively", "45");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Blake Lively", "Ryan Reynolds", "35");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Will Smith", "Jada Pinkett Smith", "53");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Jada Pinkett Smith", "Will Smith", "50");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Eva Mendes", "Ryan Gossling", "48");
+INSERT INTO movie_stars (fullname, spouse, age) VALUES ("Ryan Gossling", "Eva Mendes", "41");
+
+CREATE TABLE movies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT,
+    star TEXT,
+    co_star INTEGER);
+    
+INSERT INTO movies (title, star, co_star) VALUES ("Air_Force_One", "Harrison Ford", "Glenn Close");
+INSERT INTO movies (title, star, co_star) VALUES ("Hitch", "Will Smith", "Eva Mendes");
+INSERT INTO movies (title, star, co_star) VALUES ("The_Age_of_Adaline", "Blake Lively", "Harrison Ford");
+INSERT INTO movies (title, star, co_star) VALUES ("The_Boss", "Melissa McCarthy", "Kristen Bell");
+INSERT INTO movies (title, star, co_star) VALUES ("Hit_and_Run", "Dax Shepard", "Kristen Bell");
+INSERT INTO movies (title, star, co_star) VALUES ("Charlie_Wilson's_War", "Tom Hanks", "Emily Blunt");
+INSERT INTO movies (title, star, co_star) VALUES ("Overboard", "Goldie Hawn", "Kurt Russell");
+INSERT INTO movies (title, star, co_star) VALUES ("Bad_Moms", "Kristen Bell", "Jada Pinkett Smith");
+
+SELECT fullname, spouse FROM movie_stars;
+
+SELECT movies.title, movies.star, movies.co_star, movie_stars.spouse AS Star_Spouse FROM movies
+JOIN movie_stars
+ON movie_stars.fullname = movies.star
+WHERE movies.co_star = movie_stars.spouse;
+
+SELECT fullname,
+    CASE
+        WHEN age < 51 THEN "under 50"
+        WHEN age > 50 THEN "over 50"
+    END "age"
+FROM movie_stars;
+
+SELECT COUNT(*),
+    CASE
+        WHEN age < 51 THEN "under 50"
+        WHEN age > 50 THEN "over 50"
+    END "over_under_50"
+FROM movie_stars
+GROUP BY over_under_50;
