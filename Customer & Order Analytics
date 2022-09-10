@@ -69,11 +69,17 @@ FROM BIT_DB.FebSales
 WHERE orderdate LIKE '02/18/19%';
 
 #9 What battery products were sold in February?
-SELECT DISTINCT Product
+SELECT DISTINCT product
 FROM BIT_DB.FebSales
 WHERE Product like '%Batteries%'
 
 #10. What products in February Sales have a price ending in 99 cents?
-SELECT DISTINCT Product, Price
+SELECT DISTINCT product, Price
 FROM BIT_DB.FebSales 
 WHERE Price like '%.99'
+
+#11. List all the products sold in Los Angeles in February, and include how many of each were sold.
+SELECT product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY product;
