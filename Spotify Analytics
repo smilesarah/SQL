@@ -34,7 +34,7 @@ FROM Spotifydata
 GROUP BY artist_name;
 
 #Next, I determined the avg popularity, danceability, and energy by artist and track. 
-SELECT artist_name,track_name,AVG(popularity), AVG(danceability), AVG(energy)
+SELECT artist_name, track_name,AVG(popularity), AVG(danceability), AVG(energy)
 FROM BIT_DB.spotifydata
 GROUP BY artist_name, track_name;
 
@@ -43,3 +43,9 @@ SELECT track_name, artist_name, popularity
 FROM BIT_DB.spotifydata
 ORDER BY popularity desc
 LIMIT 10;
+
+#Finally, I ranked the artists by the average loudness of their songs.
+SELECT artist_name, AVG(loudness)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY AVG(loudness) desc;
