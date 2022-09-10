@@ -1,4 +1,4 @@
-# Here I created a table of data for an app called "nanogram" and altered the data to reflect changes to the users in the table.
+# Here I created a table of data for users of an app called "nanogram" and altered the data to reflect changes to the users in the table.
 
 CREATE TABLE nanogram (id INTEGER PRIMARY KEY,
     name TEXT, level INTEGER);
