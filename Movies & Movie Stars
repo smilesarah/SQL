@@ -1,3 +1,6 @@
+#Here I created 2 tables: one for movies stars and the other for movies
+
+
 CREATE TABLE movie_stars (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     fullname TEXT,
@@ -38,13 +41,14 @@ INSERT INTO movies (title, star, co_star) VALUES ("Charlie_Wilson's_War", "Tom H
 INSERT INTO movies (title, star, co_star) VALUES ("Overboard", "Goldie Hawn", "Kurt Russell");
 INSERT INTO movies (title, star, co_star) VALUES ("Bad_Moms", "Kristen Bell", "Jada Pinkett Smith");
 
-SELECT fullname, spouse FROM movie_stars;
 
-SELECT movies.title, movies.star, movies.co_star, movie_stars.spouse AS Star_Spouse FROM movies
+#1: What movies do spouses star in together?
+SELECT movies.title AS movie_title, movies.star, movies.co_star, movie_stars.spouse AS Star_Spouse FROM movies
 JOIN movie_stars
 ON movie_stars.fullname = movies.star
 WHERE movies.co_star = movie_stars.spouse;
 
+#2. Categorize the stars by name showing if they are younger or older than 50.
 SELECT fullname,
     CASE
         WHEN age < 51 THEN "under 50"
@@ -52,6 +56,7 @@ SELECT fullname,
     END "age"
 FROM movie_stars;
 
+#3. How many stars are over 50 and how many are under 50?
 SELECT COUNT(*),
     CASE
         WHEN age < 51 THEN "under 50"
