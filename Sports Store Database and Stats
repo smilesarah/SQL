@@ -1,0 +1,26 @@
+CREATE TABLE sarahs_sports (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, sold INTEGER);
+
+INSERT INTO sarahs_sports VALUES (1, "basketball", 50, 100, 5); 
+INSERT INTO sarahs_sports VALUES (2, "baseball_bat", 40, 100, 1);
+INSERT INTO sarahs_sports VALUES (3, "tennis_racket", 45, 100, 2);
+INSERT INTO sarahs_sports VALUES (4, "football", 45, 100, 15);
+INSERT INTO sarahs_sports VALUES (5, "football_gloves", 20, 100, 5);
+INSERT INTO sarahs_sports VALUES (6, "shoulder_pads", 80, 100, 10);
+INSERT INTO sarahs_sports VALUES (7, "softball_bat", 45, 100, 19);
+INSERT INTO sarahs_sports VALUES (8, "baseball pants", 30, 100, 3);
+INSERT INTO sarahs_sports VALUES (9, "socks", 10, 100, 30);
+INSERT INTO sarahs_sports VALUES (10, "baseball_helmet", 50, 100, 4);
+INSERT INTO sarahs_sports VALUES (11, "football_helmet", 55, 100, 20);
+INSERT INTO sarahs_sports VALUES (12, "jersey", 20, 100, 55);
+INSERT INTO sarahs_sports VALUES (13, "water_bottle", 15, 100, 10);
+INSERT INTO sarahs_sports VALUES (14, "cleats", 65, 100, 2);
+INSERT INTO sarahs_sports VALUES (15, "elbow_pads", 25, 100, 1);
+
+SELECT item, price, sold FROM sarahs_sports ORDER BY price;
+
+SELECT SUM(sold) AS "quantity_sold" FROM sarahs_sports;
+
+SELECT item, price*sold AS "total_sales_by_item" FROM sarahs_sports;
+
+SELECT SUM(price*sold) AS "total_sales" FROM sarahs_sports;
+
