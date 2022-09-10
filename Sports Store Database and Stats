@@ -1,4 +1,4 @@
-# Here I created a table of data for sports store and altered the data to reflect changes to the users in the table.
+# Here I created a table of data for sports store and queried the data to answer questions about the data in the table.
 
 CREATE TABLE sarahs_sports (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, sold INTEGER);
 
