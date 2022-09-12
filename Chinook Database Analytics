@@ -46,9 +46,14 @@ FROM chinook.invoices
 WHERE InvoiceDate LIKE '2009%';
 
 #9. What are the total sales for 2009?
+########## Option 1 ##########
 SELECT SUM(Total)
 FROM chinook.Invoices
 WHERE InvoiceDate BETWEEN '2009-01-01' AND '2009-12-31';
+########## Option 2 ##########
+SELECT SUM(total) AS 'Total Sales in 2009'
+FROM chinook.invoices
+WHERE InvoiceDate LIKE '2009%';
 
 #10. Write a query that includes the purchased track name with each invoice line item.
 SELECT t.Name, i.InvoiceLineId
@@ -71,13 +76,10 @@ JOIN chinook.Genres g on g.GenreId = t.GenreId;
 SELECT emp.FirstName, emp.LastName,
 ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
 FROM chinook.Employees emp
-
 JOIN chinook.Customers cust 
 ON cust.SupportRepId = emp.EmployeeId
-
 JOIN chinook.Invoices Inv 
 ON Inv.CustomerId = cust.CustomerId
-
 WHERE emp.Title = 'Sales Support Agent' 
 GROUP BY emp.FirstName;
 
@@ -85,13 +87,10 @@ GROUP BY emp.FirstName;
 SELECT emp.FirstName, emp.LastName,
 ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
 FROM chinook.Employees emp
-
 JOIN chinook.Customers cust 
 ON cust.SupportRepId = emp.EmployeeId
-
 JOIN chinook.Invoices Inv 
 ON Inv.CustomerId = cust.CustomerId
-
 WHERE emp.Title = 'Sales Support Agent' 
 AND Inv.InvoiceDate LIKE '2009%' 
 GROUP BY emp.FirstName
